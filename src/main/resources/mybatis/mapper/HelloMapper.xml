@@ -1,0 +1,31 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.muban.demo.mapper.HelloMapper">
+
+	<select id="getByName" resultType="UserName">
+		select * from user where name = #{name}
+	</select>
+
+	<update id="addNumber" >
+		update user set age=age+#{number} where id=#{id}
+	</update>
+
+	<insert id="addUserName">
+		insert into user(id, name, age)
+		values
+		(#{id},#{name},#{age})
+	</insert>
+
+	<insert id="add" parameterType="UserName"
+			useGeneratedKeys="true" keyProperty="id">
+				insert into user(name,age) values(#{name},#{age})
+	</insert>
+
+	<update id="updateUserCode">
+			update user set code=#{code} where name= #{name}
+	</update>
+
+	<update id="updateUser">
+			update user set name = #{name}, age =#{age} where id = #{id}
+	</update>
+</mapper>
